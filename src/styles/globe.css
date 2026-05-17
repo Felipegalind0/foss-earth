@@ -312,3 +312,33 @@ body,
   font-family: "Segoe UI", sans-serif;
   text-align: center;
 }
+
+/* ─── POI Exit Button ─────────────────────────────────────────────── */
+.poi-exit-btn {
+  position: fixed;
+  z-index: 30;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  background: rgba(10, 16, 28, 0.88);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Anchor to button centre so left/top map to the projected point */
+  transform: translate(-50%, -50%);
+  transition: background 0.15s, border-color 0.15s;
+  pointer-events: auto;
+}
+.poi-exit-btn:hover {
+  background: rgba(239, 68, 68, 0.88);
+  border-color: rgba(239, 68, 68, 0.6);
+}
+.poi-exit-btn[hidden] {
+  display: none;
+}
