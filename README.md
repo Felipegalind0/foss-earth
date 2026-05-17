@@ -57,9 +57,7 @@ Resolved compass height is also vertically smoothed, so moving the anchor across
 
 ## Deployment
 
-GitHub Pages deployment is available in two forms.
-
-For quick device testing from your current checkout, publish the built app to the `gh-pages` branch:
+Build and push to the `gh-pages` branch, which GitHub Pages serves directly:
 
 ```sh
 npm run deploy
@@ -73,15 +71,7 @@ Current Pages URL:
 https://felipegalind0.github.io/foss-earth-babylon.js/
 ```
 
-The CI workflow in [.github/workflows/ci.yml](.github/workflows/ci.yml) also builds and deploys on pushes to `main` using GitHub's Pages artifact flow.
-
-The Vite base path is set automatically in GitHub Actions from `GITHUB_REPOSITORY`, so Pages builds are emitted under `/<repo-name>/`. Local builds continue to use `/`.
-
-To build and push the branch artifact locally:
-
-```sh
-npm run deploy
-```
+The Vite base path is configured in `vite.config.ts` so the build is emitted under `/<repo-name>/` for Pages and `/` for local dev.
 
 ## Manual QA Checklist
 
