@@ -274,6 +274,8 @@ This mirrors the Cesium behavior and avoids control drift.
 
 ## Phase 7: Testing, CI, and Deployment (3 days)
 
+Status: Implemented in the Babylon repo with CI smoke coverage, GitHub Pages deployment workflow, and updated README deployment documentation.
+
 ### Tasks
 
 1. Port math utility tests and add gesture classifier tests.
@@ -287,6 +289,10 @@ This mirrors the Cesium behavior and avoids control drift.
 2. Deployment flow is documented and repeatable.
 
 ## Phase 8: Hardening and Release Candidate (3 days)
+
+Status: Desktop browser QA passed on macOS Chrome, Firefox, and Safari. The `gh-pages` branch has been published for phone QA at `https://felipegalind0.github.io/foss-earth-babylon.js/`.
+
+Compass height handling has been refactored to use cached/precomputed anchor height samples first, with a throttled cached Google tile low-envelope ray sample fallback for viewed location cells. Resolved height is vertically smoothed to avoid rooftop/street snapping, while tracked POIs still use exact mesh positions.
 
 ### Tasks
 

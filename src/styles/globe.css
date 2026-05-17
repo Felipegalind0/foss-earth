@@ -55,6 +55,10 @@ body,
   color: rgba(254, 243, 199, 0.95);
 }
 
+.perf-pill {
+  color: rgba(190, 242, 100, 0.9);
+}
+
 .runtime-notice {
   position: fixed;
   left: 16px;
@@ -68,6 +72,10 @@ body,
   border: 1px solid rgba(251, 191, 36, 0.35);
   background: rgba(38, 22, 5, 0.9);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.runtime-notice[hidden] {
+  display: none;
 }
 
 .runtime-notice-title {
@@ -104,43 +112,193 @@ body,
   background: rgba(180, 83, 9, 0.95);
 }
 
-.camera-controls {
+.camera-controls-placeholder {
+  /* Replaced by .hud-bar in Phase 4 */
+}
+
+/* ─── HUD Bar ─────────────────────────────────────────────────────── */
+.hud-bar {
   position: fixed;
   bottom: 16px;
   right: 16px;
   z-index: 10;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 10px;
+  pointer-events: auto;
 }
 
-.camera-controls__north-up {
-  appearance: none;
+.hud-status-text {
+  font-family: "SF Mono", "Menlo", "Monaco", monospace;
+  font-size: 11px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.68);
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+  padding: 9px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(10, 14, 22, 0.72);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.hud-circle-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(12, 16, 24, 0.8);
+  color: rgba(255, 255, 255, 0.82);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(10, 16, 28, 0.82);
-  color: rgba(239, 246, 255, 0.92);
-  font-family: "SF Mono", "Menlo", "Monaco", monospace;
-  font-size: 11px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.hud-circle-button:hover {
+  border-color: rgba(255, 255, 255, 0.32);
+  background: rgba(20, 26, 36, 0.9);
+}
+
+.hud-circle-button:active {
+  background: rgba(30, 40, 56, 0.95);
+}
+
+.north-button {
+  overflow: hidden;
+}
+
+.settings-button {
+  font-size: 18px;
+}
+
+/* ─── Modals ──────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay[hidden] {
+  display: none;
+}
+
+.modal-card {
+  background: #1a2035;
+  color: rgba(239, 246, 255, 0.95);
+  border-radius: 14px;
+  padding: 28px 32px;
+  max-width: 480px;
+  width: 90%;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  display: grid;
+  gap: 16px;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 18px;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  color: rgba(239, 246, 255, 0.98);
+}
+
+.modal-dismiss {
+  justify-self: start;
+  appearance: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 7px 18px;
+  background: rgba(59, 130, 246, 0.15);
+  color: rgba(239, 246, 255, 0.95);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
-  pointer-events: all;
 }
 
-.camera-controls__north-up:hover {
-  background: rgba(30, 41, 59, 0.92);
-  border-color: rgba(255, 255, 255, 0.35);
+.modal-dismiss:hover {
+  background: rgba(59, 130, 246, 0.28);
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
-.camera-controls__north-up:active {
-  background: rgba(51, 65, 85, 0.95);
+/* ─── Help Modal Content ──────────────────────────────────────────── */
+.help-axes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.help-axis {
+  display: grid;
+  gap: 6px;
+}
+
+.help-axis-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(147, 197, 253, 0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.help-axis-triggers {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.help-trigger {
+  font-size: 12px;
+  color: rgba(239, 246, 255, 0.82);
+  padding: 3px 8px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.help-axis-note {
+  font-size: 11px;
+  color: rgba(148, 163, 184, 0.75);
+  font-style: italic;
+}
+
+.help-zoom {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(239, 246, 255, 0.75);
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Settings Modal Content ──────────────────────────────────────── */
+.settings-line {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(239, 246, 255, 0.75);
+  line-height: 1.5;
+}
+
+.settings-renderer-line {
+  margin: 0;
+  font-family: "SF Mono", "Menlo", "Monaco", monospace;
+  font-size: 12px;
+  color: rgba(147, 197, 253, 0.85);
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
 }
 
 .boot-error {
