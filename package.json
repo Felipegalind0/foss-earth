@@ -1,14 +1,20 @@
 {
-  "name": "foss-earth-babylon",
+  "name": "foss-earth",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./layers": "./src/layers/types.ts",
+    "./cameraMath": "./src/camera/cameraMath.ts",
+    "./style.css": "./src/styles/globe.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "ci": "npm run lint && npm run test && npm run build",
     "deploy": "npm run deploy:gh-pages",
-    "deploy:gh-pages": "npm run build -- --base=/foss-earth-babylon.js/ && gh-pages -d dist",
+    "deploy:gh-pages": "npm run build -- --base=/foss-earth/ && gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest run --passWithNoTests",
