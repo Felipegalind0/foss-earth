@@ -1,4 +1,4 @@
-import{t as e}from"./index-CULNow8j.js";var t=`volumetricLightingBlendVolumePixelShader`,n=`varying vec2 vUV;uniform sampler2D textureSampler;uniform sampler2D depthSampler;uniform mat4 invProjection;uniform vec2 outputTextureSize;
+import{t as e}from"./index-D7-aJb2B.js";var t=`volumetricLightingBlendVolumePixelShader`,n=`varying vec2 vUV;uniform sampler2D textureSampler;uniform sampler2D depthSampler;uniform mat4 invProjection;uniform vec2 outputTextureSize;
 #ifdef USE_EXTINCTION
 uniform vec3 extinction;
 #endif
