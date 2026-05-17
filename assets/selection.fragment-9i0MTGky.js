@@ -1,4 +1,4 @@
-import{t as e}from"./index-Dsfhsej6.js";var t=`selectionPixelShader`,n=`#ifdef INSTANCES
+import{t as e}from"./index-CUh6hCo1.js";var t=`selectionPixelShader`,n=`#ifdef INSTANCES
 flat varying float vSelectionId;
 #else
 uniform float selectionId;
