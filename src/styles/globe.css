@@ -1,0 +1,156 @@
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #040914;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.globe-shell {
+  position: fixed;
+  inset: 0;
+}
+
+.globe-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+
+.boot-overlay {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.renderer-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(10, 16, 28, 0.78);
+  color: rgba(239, 246, 255, 0.92);
+  font-family: "SF Mono", "Menlo", "Monaco", monospace;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+}
+
+.renderer-pill--fallback {
+  border-color: rgba(251, 191, 36, 0.4);
+  background: rgba(54, 34, 10, 0.8);
+  color: rgba(254, 243, 199, 0.95);
+}
+
+.runtime-notice {
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  z-index: 20;
+  width: min(420px, calc(100vw - 32px));
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  background: rgba(38, 22, 5, 0.9);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.runtime-notice-title {
+  margin: 0;
+  color: rgba(253, 230, 138, 1);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.runtime-notice-text {
+  margin: 0;
+  color: rgba(254, 243, 199, 0.95);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.runtime-notice-dismiss {
+  justify-self: start;
+  appearance: none;
+  border: 1px solid rgba(253, 230, 138, 0.35);
+  border-radius: 999px;
+  padding: 5px 12px;
+  background: rgba(146, 64, 14, 0.9);
+  color: rgba(254, 243, 199, 0.95);
+  font-family: "Segoe UI", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.runtime-notice-dismiss:hover {
+  background: rgba(180, 83, 9, 0.95);
+}
+
+.camera-controls {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.camera-controls__north-up {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(10, 16, 28, 0.82);
+  color: rgba(239, 246, 255, 0.92);
+  font-family: "SF Mono", "Menlo", "Monaco", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  pointer-events: all;
+}
+
+.camera-controls__north-up:hover {
+  background: rgba(30, 41, 59, 0.92);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.camera-controls__north-up:active {
+  background: rgba(51, 65, 85, 0.95);
+}
+
+.boot-error {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: rgba(248, 250, 252, 0.95);
+  background: radial-gradient(circle at 30% 20%, #1f2937 0%, #020617 62%);
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+}
