@@ -410,3 +410,103 @@
 .poi-exit-btn[hidden] {
   display: none;
 }
+
+/* ─── Extra Panels Grid (bottom-right) ───────────────────────────── */
+.extra-panels-grid {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+/* ─── POI Sprite Size Tuner panel ────────────────────────────────── */
+.poi-sprite-tuner {
+  pointer-events: auto;
+  width: 210px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(10, 14, 22, 0.82);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  font-family: "SF Mono", "Menlo", "Monaco", monospace;
+}
+
+.poi-sprite-tuner[hidden] {
+  display: none;
+}
+
+.poi-sprite-tuner-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(147, 197, 253, 0.88);
+  margin-bottom: 8px;
+}
+
+.poi-sprite-tuner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 8px;
+  margin-bottom: 8px;
+}
+
+.poi-sprite-tuner-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: default;
+}
+
+.poi-sprite-tuner-field span {
+  font-size: 9px;
+  color: rgba(148, 163, 184, 0.8);
+  white-space: nowrap;
+}
+
+.poi-sprite-tuner-field input {
+  width: 100%;
+  height: 22px;
+  padding: 0 5px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(239, 246, 255, 0.92);
+  font: inherit;
+  font-size: 11px;
+}
+
+.poi-sprite-tuner-field input:focus {
+  outline: none;
+  border-color: rgba(96, 165, 250, 0.7);
+}
+
+.poi-sprite-tuner-apply {
+  width: 100%;
+  height: 24px;
+  appearance: none;
+  border: 1px solid rgba(96, 165, 250, 0.5);
+  border-radius: 5px;
+  background: rgba(59, 130, 246, 0.18);
+  color: rgba(147, 197, 253, 0.95);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.poi-sprite-tuner-apply:hover {
+  background: rgba(59, 130, 246, 0.32);
+  border-color: rgba(96, 165, 250, 0.75);
+}
+
+.poi-sprite-tuner-apply[hidden] {
+  display: none;
+}
+
