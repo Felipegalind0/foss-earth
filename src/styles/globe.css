@@ -529,3 +529,44 @@
   display: none;
 }
 
+/* ─── Theme button ──────────────────────────────────────────── */
+.theme-button {
+  font-size: 16px;
+}
+
+/* ─── Light theme overrides ─────────────────────────────────── */
+:root[data-theme="light"] .globe-shell {
+  background: #e2e8f0;
+}
+
+:root[data-theme="light"] .hud-chip,
+:root[data-theme="light"] .hud-circle-button {
+  border-color: rgba(15, 23, 42, 0.18);
+  background: rgba(248, 250, 252, 0.82);
+  color: rgba(15, 23, 42, 0.88);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.18);
+}
+
+:root[data-theme="light"] .hud-chip-button:hover,
+:root[data-theme="light"] .hud-circle-button:hover,
+:root[data-theme="light"] .map-source-option:hover {
+  border-color: rgba(15, 23, 42, 0.32);
+  background: rgba(226, 232, 240, 0.94);
+}
+
+:root[data-theme="light"] .hud-chip-button:active,
+:root[data-theme="light"] .hud-circle-button:active,
+:root[data-theme="light"] .map-source-option:active {
+  background: rgba(203, 213, 225, 0.96);
+}
+
+:root[data-theme="light"] .map-source-menu {
+  border-color: rgba(15, 23, 42, 0.18);
+  background: rgba(248, 250, 252, 0.97);
+}
+
+:root[data-theme="light"] .map-source-option {
+  color: rgba(15, 23, 42, 0.88);
+}
+
+
