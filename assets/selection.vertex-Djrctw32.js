@@ -1,4 +1,4 @@
-import{t as e}from"./index-Bzbs0iFf.js";var t=`selectionVertexShader`,n=`attribute vec3 position;
+import{t as e}from"./index-DI0IjWXj.js";var t=`selectionVertexShader`,n=`attribute vec3 position;
 #ifdef INSTANCES
 attribute float instanceSelectionId;
 #endif
