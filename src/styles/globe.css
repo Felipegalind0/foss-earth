@@ -141,14 +141,16 @@
 
 .hud-chip-button:hover,
 .hud-circle-button:hover,
-.map-source-option:hover {
+.map-source-option:hover,
+.renderer-option:hover {
   border-color: rgba(255, 255, 255, 0.32);
   background: rgba(20, 26, 36, 0.9);
 }
 
 .hud-chip-button:active,
 .hud-circle-button:active,
-.map-source-option:active {
+.map-source-option:active,
+.renderer-option:active {
   background: rgba(30, 40, 56, 0.95);
 }
 
@@ -183,6 +185,70 @@
 
 .map-source-menu[hidden] {
   display: none;
+}
+
+.renderer-control {
+  position: relative;
+  display: inline-flex;
+}
+
+.renderer-menu {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 8px);
+  display: grid;
+  gap: 4px;
+  min-width: 172px;
+  padding: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(10, 14, 22, 0.94);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.renderer-menu[hidden] {
+  display: none;
+}
+
+.renderer-option {
+  appearance: none;
+  cursor: pointer;
+  min-height: 28px;
+  padding: 6px 9px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: rgba(239, 246, 255, 0.88);
+  font: inherit;
+  font-size: 11px;
+  line-height: 1.1;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.renderer-option.is-active {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 600;
+}
+
+.renderer-debug-sep {
+  height: 1px;
+  margin: 4px 0;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.renderer-debug {
+  padding: 5px 9px;
+  color: rgba(239, 246, 255, 0.55);
+  font-size: 10px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-all;
+  user-select: text;
+  -webkit-user-select: text;
 }
 
 .map-source-option {
@@ -549,14 +615,16 @@
 
 :root[data-theme="light"] .hud-chip-button:hover,
 :root[data-theme="light"] .hud-circle-button:hover,
-:root[data-theme="light"] .map-source-option:hover {
+:root[data-theme="light"] .map-source-option:hover,
+:root[data-theme="light"] .renderer-option:hover {
   border-color: rgba(15, 23, 42, 0.32);
   background: rgba(226, 232, 240, 0.94);
 }
 
 :root[data-theme="light"] .hud-chip-button:active,
 :root[data-theme="light"] .hud-circle-button:active,
-:root[data-theme="light"] .map-source-option:active {
+:root[data-theme="light"] .map-source-option:active,
+:root[data-theme="light"] .renderer-option:active {
   background: rgba(203, 213, 225, 0.96);
 }
 
@@ -567,6 +635,28 @@
 
 :root[data-theme="light"] .map-source-option {
   color: rgba(15, 23, 42, 0.88);
+}
+
+:root[data-theme="light"] .renderer-menu {
+  border-color: rgba(15, 23, 42, 0.18);
+  background: rgba(248, 250, 252, 0.97);
+}
+
+:root[data-theme="light"] .renderer-option {
+  color: rgba(15, 23, 42, 0.88);
+}
+
+:root[data-theme="light"] .renderer-option.is-active {
+  border-color: rgba(15, 23, 42, 0.22);
+  background: rgba(15, 23, 42, 0.08);
+}
+
+:root[data-theme="light"] .renderer-debug-sep {
+  background: rgba(15, 23, 42, 0.14);
+}
+
+:root[data-theme="light"] .renderer-debug {
+  color: rgba(15, 23, 42, 0.5);
 }
 
 
