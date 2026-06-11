@@ -607,6 +607,39 @@
   font-size: 16px;
 }
 
+/* ─── Anchor pan grab overlay (globe drag) ──────────────────── */
+[data-foss-earth-anchor-pan-debug] .anchor-pan-line {
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0.95;
+}
+
+[data-foss-earth-anchor-pan-debug] .anchor-pan-dot {
+  stroke-width: 2;
+}
+
+:root[data-theme="dark"] [data-foss-earth-anchor-pan-debug] .anchor-pan-line,
+:root.dark [data-foss-earth-anchor-pan-debug] .anchor-pan-line {
+  stroke: #ffffff;
+}
+
+:root[data-theme="dark"] [data-foss-earth-anchor-pan-debug] .anchor-pan-dot,
+:root.dark [data-foss-earth-anchor-pan-debug] .anchor-pan-dot {
+  fill: #ffffff;
+  stroke: #000000;
+}
+
+:root[data-theme="light"] [data-foss-earth-anchor-pan-debug] .anchor-pan-line,
+:root.light [data-foss-earth-anchor-pan-debug] .anchor-pan-line {
+  stroke: #000000;
+}
+
+:root[data-theme="light"] [data-foss-earth-anchor-pan-debug] .anchor-pan-dot,
+:root.light [data-foss-earth-anchor-pan-debug] .anchor-pan-dot {
+  fill: #000000;
+  stroke: #ffffff;
+}
+
 /* ─── Light theme overrides ─────────────────────────────────── */
 :root[data-theme="light"] .globe-shell {
   background: #e2e8f0;
