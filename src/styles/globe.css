@@ -3,13 +3,9 @@
 }
 
 :root {
-  --globe-accent: #3b82f6;
-  --globe-accent-soft: #93c5fd;
-  --globe-accent-muted: #60a5fa;
-  --globe-accent-rgb: 59, 130, 246;
-  --globe-accent-soft-rgb: 147, 197, 253;
-  --globe-accent-deep-rgb: 37, 99, 235;
-  --globe-accent-panel-rgb: 15, 40, 96;
+  --globe-accent: #0284c7;
+  --globe-accent-bright: #38bdf8;
+  --globe-accent-hover: #0369a1;
 }
 
 .globe-shell {
@@ -567,7 +563,7 @@
 
 .poi-sprite-tuner-field input:focus {
   outline: none;
-  border-color: rgba(var(--globe-accent-rgb), 0.7);
+  border-color: rgba(37, 99, 235, 0.7);
 }
 
 .poi-sprite-tuner-actions {
@@ -581,7 +577,7 @@
   width: 100%;
   height: 24px;
   appearance: none;
-  border: 1px solid rgba(var(--globe-accent-rgb), 0.5);
+  border: 1px solid rgba(37, 99, 235, 0.5);
   border-radius: 5px;
   background: rgba(59, 130, 246, 0.18);
   color: rgba(147, 197, 253, 0.95);
@@ -599,7 +595,7 @@
 
 .poi-sprite-tuner-apply:hover {
   background: rgba(59, 130, 246, 0.32);
-  border-color: rgba(var(--globe-accent-rgb), 0.75);
+  border-color: rgba(37, 99, 235, 0.75);
 }
 
 .poi-sprite-tuner-save-defaults:hover {
@@ -648,8 +644,8 @@
   justify-content: flex-start;
   gap: 6px;
   padding: 0 8px 0 0;
-  border-color: rgba(var(--globe-accent-rgb), 0.55);
-  background: rgba(var(--globe-accent-panel-rgb), 0.92);
+  border-color: rgba(2, 132, 199, 0.55);
+  background: rgba(8, 47, 73, 0.92);
 }
 
 .input-mode-button--debug {
@@ -683,9 +679,9 @@
   letter-spacing: 0.08em;
   font-weight: 800;
   line-height: 1;
-  color: rgba(var(--globe-accent-soft-rgb), 0.96);
-  border: 1px solid rgba(var(--globe-accent-rgb), 0.55);
-  background: rgba(var(--globe-accent-deep-rgb), 0.38);
+  color: #bae6fd;
+  border: 1px solid rgba(2, 132, 199, 0.55);
+  background: rgba(2, 132, 199, 0.28);
   pointer-events: none;
 }
 
@@ -786,8 +782,13 @@
 }
 
 .input-mode-toggle-option.is-active {
-  background: rgba(var(--globe-accent-rgb), 0.22);
-  color: var(--globe-accent-soft);
+  background: rgba(14, 165, 233, 0.22);
+  color: var(--globe-accent-bright);
+}
+
+.input-mode-toggle-option.is-active .input-mode-toggle-icon,
+.input-mode-toggle-option.is-active .input-mode-toggle-icon svg {
+  color: inherit;
 }
 
 .input-mode-toggle-icon,
@@ -852,7 +853,7 @@
   background: rgba(0, 0, 0, 0.35);
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: 4px;
-  color: rgba(var(--globe-accent-soft-rgb), 0.95);
+  color: #93c5fd;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 11px;
   font-weight: 600;
@@ -868,8 +869,8 @@
 
 .gesture-value-input:focus {
   outline: none;
-  border-color: rgba(var(--globe-accent-rgb), 0.5);
-  box-shadow: 0 0 0 2px rgba(var(--globe-accent-rgb), 0.12);
+  border-color: #0284c7;
+  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.15);
 }
 
 .gesture-reset-btn,
@@ -896,7 +897,7 @@
 }
 
 .gesture-play-btn:hover {
-  background: rgba(var(--globe-accent-rgb), 0.15);
+  background: rgba(14, 165, 233, 0.15);
 }
 
 .gesture-arrow {
@@ -921,14 +922,14 @@
   width: 12px;
   height: 12px;
   flex-shrink: 0;
-  color: rgba(var(--globe-accent-soft-rgb), 0.65);
+  color: var(--globe-accent-bright);
 }
 
 .gesture-action-label {
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 10px;
   font-weight: 700;
-  color: rgba(var(--globe-accent-soft-rgb), 0.82);
+  color: var(--globe-accent-bright);
   white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -1061,8 +1062,13 @@
 }
 
 :root[data-theme="light"] .input-mode-toggle-option.is-active {
-  background: rgba(var(--globe-accent-rgb), 0.14);
-  color: #1d4ed8;
+  background: rgba(14, 165, 233, 0.14);
+  color: var(--globe-accent);
+}
+
+:root[data-theme="light"] .input-mode-toggle-option.is-active .input-mode-toggle-icon,
+:root[data-theme="light"] .input-mode-toggle-option.is-active .input-mode-toggle-icon svg {
+  color: inherit;
 }
 
 :root[data-theme="light"] .gesture-icon,
@@ -1081,17 +1087,14 @@
 }
 
 :root[data-theme="light"] .gesture-action-icon,
-:root[data-theme="light"] .gesture-action-icon svg {
-  color: rgba(var(--globe-accent-deep-rgb), 0.75);
-}
-
+:root[data-theme="light"] .gesture-action-icon svg,
 :root[data-theme="light"] .gesture-action-label {
-  color: rgba(var(--globe-accent-deep-rgb), 0.85);
+  color: var(--globe-accent);
 }
 
 :root[data-theme="light"] .input-mode-button--auto {
-  border-color: rgba(var(--globe-accent-rgb), 0.45);
-  background: rgba(219, 234, 254, 0.9);
+  border-color: rgba(2, 132, 199, 0.45);
+  background: rgba(224, 242, 254, 0.9);
 }
 
 
@@ -1127,13 +1130,13 @@
     /* comet spotlight painted into the 2px border rail */
     conic-gradient(
       from var(--hud-spin-angle),
-      rgba(var(--globe-accent-rgb), 0.06)  0deg,
-      rgba(var(--globe-accent-rgb), 0.06)  210deg,
-      rgba(var(--globe-accent-rgb), 0.7)   280deg,
+      rgba(37, 99, 235, 0.06)  0deg,
+      rgba(37, 99, 235, 0.06)  210deg,
+      rgba(37, 99, 235, 0.7)   280deg,
       rgba(125, 211, 252, 1)    320deg,
       rgba(186, 230, 253, 1)    340deg,
       rgba(125, 211, 252, 0.7)  355deg,
-      rgba(var(--globe-accent-rgb), 0.06)  360deg
+      rgba(37, 99, 235, 0.06)  360deg
     ) border-box;
   animation: hud-chip-spin 1.6s linear infinite;
 }
