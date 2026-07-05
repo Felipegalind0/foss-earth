@@ -1,0 +1,147 @@
+/* ─── POI Exit Button ─────────────────────────────────────────────── */
+.poi-exit-btn {
+  position: fixed;
+  z-index: 30;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  background: rgba(10, 16, 28, 0.88);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Anchor to button centre so left/top map to the projected point */
+  transform: translate(-50%, -50%);
+  transition: background 0.15s, border-color 0.15s;
+  pointer-events: auto;
+}
+.poi-exit-btn:hover {
+  background: rgba(239, 68, 68, 0.88);
+  border-color: rgba(239, 68, 68, 0.6);
+}
+.poi-exit-btn[hidden] {
+  display: none;
+}
+
+/* ─── Extra Panels Grid (bottom-right) ───────────────────────────── */
+.extra-panels-grid {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+/* ─── POI Sprite Size Tuner panel ────────────────────────────────── */
+.poi-sprite-tuner {
+  pointer-events: auto;
+  width: 210px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(10, 14, 22, 0.82);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  font-family: "SF Mono", "Menlo", "Monaco", monospace;
+}
+
+.poi-sprite-tuner[hidden] {
+  display: none;
+}
+
+.poi-sprite-tuner-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(147, 197, 253, 0.88);
+  margin-bottom: 8px;
+}
+
+.poi-sprite-tuner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 8px;
+  margin-bottom: 8px;
+}
+
+.poi-sprite-tuner-field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: default;
+}
+
+.poi-sprite-tuner-field span {
+  font-size: 9px;
+  color: rgba(148, 163, 184, 0.8);
+  white-space: nowrap;
+}
+
+.poi-sprite-tuner-field input {
+  width: 100%;
+  height: 22px;
+  padding: 0 5px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(239, 246, 255, 0.92);
+  font: inherit;
+  font-size: 11px;
+}
+
+.poi-sprite-tuner-field input:focus {
+  outline: none;
+  border-color: rgba(37, 99, 235, 0.7);
+}
+
+.poi-sprite-tuner-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.poi-sprite-tuner-apply,
+.poi-sprite-tuner-save-defaults {
+  width: 100%;
+  height: 24px;
+  appearance: none;
+  border: 1px solid rgba(37, 99, 235, 0.5);
+  border-radius: 5px;
+  background: rgba(59, 130, 246, 0.18);
+  color: rgba(147, 197, 253, 0.95);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.poi-sprite-tuner-save-defaults {
+  border-color: rgba(52, 211, 153, 0.5);
+  background: rgba(16, 185, 129, 0.16);
+  color: rgba(167, 243, 208, 0.95);
+}
+
+.poi-sprite-tuner-apply:hover {
+  background: rgba(59, 130, 246, 0.32);
+  border-color: rgba(37, 99, 235, 0.75);
+}
+
+.poi-sprite-tuner-save-defaults:hover {
+  background: rgba(16, 185, 129, 0.28);
+  border-color: rgba(52, 211, 153, 0.75);
+}
+
+.poi-sprite-tuner-apply[hidden],
+.poi-sprite-tuner-save-defaults[hidden] {
+  display: none;
+}

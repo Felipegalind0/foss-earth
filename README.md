@@ -39,6 +39,11 @@ npm run ci
 
 The test suite includes camera/geodetic math coverage and jsdom smoke tests for app startup, URL key parsing, north-up reset behavior, layer lifecycle delegation, and cleanup.
 
+## Gesture Icon Sources
+
+- Non-clicked gesture icons (outline/no fill, for example 2-finger swipe) come from: https://www.svgrepo.com/collection/mobile-gestures-with-arrows/
+- Click gesture icons come from: https://www.svgrepo.com/collection/libre-variety-filled-icons/
+
 ## Compass Height Model
 
 The orbit compass resolves anchor height through a small quantized cache backed by a deterministic smooth global elevation model. The default height provider is continuous over the globe and intentionally ignores buildings, trees, and tile LOD geometry, so camera anchors do not jump when moving over dense city geometry. Layers can still provide cheap precomputed `anchorHeightSamples` as part of their layer state:
