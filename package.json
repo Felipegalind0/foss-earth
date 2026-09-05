@@ -5,6 +5,8 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./windowing": "./src/windowing/index.ts",
+    "./windowing.css": "./src/windowing/styles/windowing.css",
     "./layers": "./src/layers/types.ts",
     "./cameraMath": "./src/camera/cameraMath.ts",
     "./smoothElevation": "./src/terrain/smoothElevation.ts",
