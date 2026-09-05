@@ -5,6 +5,11 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./runtime": "./src/runtime/index.ts",
+    "./shell": "./src/shell/index.ts",
+    "./input": "./src/input/public.ts",
+    "./input-mode.css": "./src/styles/input-mode.css",
+    "./shell.css": "./src/styles/hud.css",
     "./windowing": "./src/windowing/index.ts",
     "./windowing.css": "./src/windowing/styles/windowing.css",
     "./layers": "./src/layers/types.ts",
