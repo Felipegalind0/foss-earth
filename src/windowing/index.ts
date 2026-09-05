@@ -14,7 +14,9 @@ export {
   closeTabInWorkspace,
   createWindowSlotState,
   createWindowWorkspaceState,
+  openTabAndExpandWorkspaceSlot,
   openTabInWorkspace,
+  selectTabAndExpandWorkspaceSlot,
   selectTabInWorkspace,
   setWorkspaceSlotCollapsed,
   setWorkspaceSlotSize,
@@ -73,6 +75,14 @@ export type {
   TabStripStrings,
 } from "./react/TabStrip";
 export { TabStrip } from "./react/TabStrip";
+
+export type {
+  WorkspaceDockPanelOverrides,
+  WorkspaceDockSlotClassNames,
+  WorkspaceDockSlotProps,
+  WorkspaceDockSlotStrings,
+} from "./react/WorkspaceDockSlot";
+export { WorkspaceDockSlot } from "./react/WorkspaceDockSlot";
 
 export type {
   UseWindowWorkspaceOptions,
