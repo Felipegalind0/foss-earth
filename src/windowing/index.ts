@@ -16,6 +16,7 @@ export {
   createWindowWorkspaceState,
   openTabAndExpandWorkspaceSlot,
   openTabInWorkspace,
+  moveTabsBetweenWorkspaceSlots,
   selectTabAndExpandWorkspaceSlot,
   selectTabInWorkspace,
   setWorkspaceSlotCollapsed,
@@ -45,10 +46,13 @@ export type {
 } from "./layout/viewportPolicy";
 
 export {
+  canFitSecondarySlot,
   DEFAULT_MIN_SECONDARY_ASPECT_RATIO,
   DEFAULT_MIN_SECONDARY_WIDTH,
   resolveWindowViewportPolicy,
 } from "./layout/viewportPolicy";
+
+export type { SecondarySlotFitInput } from "./layout/viewportPolicy";
 
 export type {
   DockPanelClassNames,
