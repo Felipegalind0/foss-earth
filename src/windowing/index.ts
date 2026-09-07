@@ -18,6 +18,7 @@ export {
   openTabInWorkspace,
   moveTabsBetweenWorkspaceSlots,
   selectTabAndExpandWorkspaceSlot,
+  selectTabAndToggleWorkspaceSlot,
   selectTabInWorkspace,
   setWorkspaceSlotCollapsed,
   setWorkspaceSlotSize,
