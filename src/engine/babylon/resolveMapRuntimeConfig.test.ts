@@ -36,4 +36,13 @@ describe("resolveMapRuntimeConfig", () => {
     expect(config.googleApiKey).toBeNull();
     expect(config.rasterBaseMap.id).toBe("usgs-imagery-topo");
   });
+
+  it("restores independent elevation and quality selections", () => {
+    const config = resolveMapRuntimeConfig({
+      searchParams: new URLSearchParams("mapSource=usgs-topo&elevationSource=aws-terrarium&terrainQuality=high"),
+    });
+    expect(config.rasterBaseMap.id).toBe("usgs-topo");
+    expect(config.terrainSource.id).toBe("aws-terrarium");
+    expect(config.rasterQuality).toBe("high");
+  });
 });
