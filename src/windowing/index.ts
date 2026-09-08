@@ -97,3 +97,5 @@ export { useWindowWorkspace } from "./react/useWindowWorkspace";
 
 export { LocationPanel } from "./react/LocationPanel";
 export type { GeodeticLocation, LocationPanelProps, LocationSearchProvider, LocationSearchResult } from "./react/LocationPanel";
+
+export type { Airport, AirportRunway, AirportMode, AirportFlightPreset } from "../airports/types";
