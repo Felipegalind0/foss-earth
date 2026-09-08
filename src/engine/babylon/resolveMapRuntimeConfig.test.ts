@@ -16,7 +16,8 @@ describe("resolveMapRuntimeConfig", () => {
       googleApiKey: "test-key",
       searchParams: new URLSearchParams("mapSource=osm-standard"),
     });
-    expect(config.googleApiKey).toBeNull();
+    expect(config.googleApiKey).toBe("test-key");
+    expect(config.preferGoogleTiles).toBe(false);
     expect(config.rasterBaseMap.id).toBe("osm-standard");
   });
 
