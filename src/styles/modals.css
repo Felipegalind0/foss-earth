@@ -7,6 +7,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Centre within the on-screen area, not behind the browser toolbar. */
+  padding-bottom: var(--foss-inset-bottom);
 }
 
 .modal-overlay[hidden] {

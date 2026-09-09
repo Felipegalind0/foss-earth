@@ -31,8 +31,8 @@
 /* ─── Extra Panels Grid (bottom-right) ───────────────────────────── */
 .extra-panels-grid {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: var(--foss-hud-bottom);
+  right: var(--foss-hud-right);
   z-index: 10;
   display: flex;
   flex-direction: column;

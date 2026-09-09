@@ -1,9 +1,10 @@
 .runtime-notice {
   position: fixed;
-  left: 16px;
-  bottom: 68px;
+  left: var(--foss-hud-left);
+  /* Clears the HUD bar, which is itself lifted above any browser toolbar. */
+  bottom: calc(var(--foss-hud-bottom) + 52px);
   z-index: 20;
-  width: min(420px, calc(100vw - 32px));
+  width: min(420px, calc(100vw - var(--foss-hud-left) - var(--foss-hud-right)));
   display: grid;
   gap: 10px;
   padding: 14px;

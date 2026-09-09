@@ -1,91 +1,55 @@
-# FOSS Earth Babylon
+# FOSS Earth
 
-Babylon.js migration of the FOSS Earth globe runtime. The app renders Google Photorealistic 3D Tiles when a Maps Tiles API key is provided and falls back to a deterministic local globe scene when no key is available.
+A photorealistic 3D globe that runs in your browser. Fly anywhere on Earth over real terrain and
+real imagery — no install, no account, no sign-up.
 
-## Requirements
+### **[→ Open FOSS Earth](https://felipegalind0.github.io/foss-earth/)**
 
-- Node.js 22 or newer
-- npm
-- Optional: a Google Maps Tiles API key with the Maps Tiles API enabled
+That link is the app. It is free, it works on phones and desktops, and it stays up to date on its
+own. There is nothing to download.
 
-## Local Development
+## What you can do
 
-```sh
-npm ci
-npm run dev
-```
+- **Go anywhere.** Search a place name or coordinates and fly to it.
+- **Real terrain.** Mountains, valleys and coastlines are built from streamed global elevation
+  data, not a flat texture.
+- **Pick your map.** Switch between free open basemaps, or bring your own Google Maps Tiles API key
+  for Google's Photorealistic 3D Tiles.
+- **Airports and flight mode.** Search an ICAO or IATA code, pick a runway and a direction, and
+  start there — see [Airport locations](docs/airport-locations.md).
+- **Works offline-ish.** Tiles you have already visited are cached, so revisiting an area is fast.
+- **Light and dark themes**, a live performance readout, and WebGPU rendering where your browser
+  supports it.
 
-Open the Vite URL printed by the dev server. To enable Google Photorealistic 3D Tiles, append a key query parameter:
+## Controls
 
-```text
-http://127.0.0.1:5173/?key=YOUR_GOOGLE_MAPS_API_KEY
-```
+| | Look around | Orbit | Zoom |
+|---|---|---|---|
+| **Mouse** | Left drag | Right drag | Wheel |
+| **Trackpad** | Drag | Shift + swipe | Pinch |
+| **Touch** | One finger | Two fingers | Pinch |
 
-Without a key, the app starts in fallback mode and shows the fallback notice in the lower-left corner.
+The **?** button in the bottom bar shows this in the app. The **N** button resets the view to
+north-up.
 
-## Quality Checks
+## Documentation
 
-```sh
-npm run lint
-npm run test
-npm run build
-```
+| Document | What it covers |
+|---|---|
+| [Deploying to GitHub Pages](docs/deploying.md) | Publishing the live site — one command, `npm run deploy` |
+| [Development](docs/development.md) | Running the code locally, tests, and building your own copy |
+| [Manual QA checklist](docs/manual-qa.md) | What to exercise by hand before a release |
+| [Streamed terrain](docs/streamed-terrain.md) | How elevation tiles are streamed and queried |
+| [Airport locations](docs/airport-locations.md) | Airport and runway lookup in flight mode |
+| [Compass height model](docs/compass-height-model.md) | How camera anchor height is resolved and smoothed |
+| [Design proposals](docs/proposals/) | Architecture proposals and implementation appendices |
 
-For the same sequence used by CI:
+## Contributing
 
-```sh
-npm run ci
-```
+Bug reports and pull requests are welcome. Start with [Development](docs/development.md) for setup,
+the test suite, and architecture notes.
 
-The test suite includes camera/geodetic math coverage and jsdom smoke tests for app startup, URL key parsing, north-up reset behavior, layer lifecycle delegation, and cleanup.
+## License
 
-## Gesture Icon Sources
-
-- Non-clicked gesture icons (outline/no fill, for example 2-finger swipe) come from: https://www.svgrepo.com/collection/mobile-gestures-with-arrows/
-- Click gesture icons come from: https://www.svgrepo.com/collection/libre-variety-filled-icons/
-
-## Compass Height Model
-
-The orbit compass resolves anchor height through a small quantized cache backed by a deterministic smooth global elevation model. The default height provider is continuous over the globe and intentionally ignores buildings, trees, and tile LOD geometry, so camera anchors do not jump when moving over dense city geometry. Layers can still provide cheap precomputed `anchorHeightSamples` as part of their layer state:
-
-```ts
-return {
-	anchorHeightSamples: [
-		{ latDeg: 44.977753, lonDeg: -93.265011, heightMeters: 264 },
-	],
-};
-```
-
-Tracked POIs keep their exact mesh position. Normal camera anchors use layer samples when available; otherwise the app uses `smoothSurfaceHeightMeters(lat, lon)` and falls back to the WGS84 ellipsoid only for invalid inputs. `smoothSurfaceEcef(lat, lon, offsetMeters)` is exported for marker layers that need to place sprites or meshes above the same smooth ground model.
-
-Resolved compass height is also vertically smoothed, so moving the anchor across city geometry does not instantly snap the compass between street level and rooftops.
-
-## Deployment
-
-Build and push to the `gh-pages` branch, which GitHub Pages serves directly:
-
-```sh
-npm run deploy
-```
-
-The first run creates the `gh-pages` branch automatically. In the repository settings, set Pages to deploy from the `gh-pages` branch root if it is not already configured.
-
-Current Pages URL:
-
-```text
-https://felipegalind0.github.io/foss-earth-babylon.js/
-```
-
-The Vite base path is configured in `vite.config.ts` so the build is emitted under `/<repo-name>/` for Pages and `/` for local dev.
-
-## Manual QA Checklist
-
-- Boot without a key and confirm fallback mode is visible.
-- Boot with `?key=...` and confirm Google tiles mode is reported.
-- macOS desktop QA passed on Chrome, Firefox, and Safari on 2026-05-17.
-- Verify desktop controls: left drag pan, right drag orbit, shift plus trackpad swipe orbit, wheel zoom.
-- Verify mobile/touch controls: one-finger pan, two-finger orbit, pinch zoom.
-- Confirm HUD lat/lon/heading/pitch/zoom updates while navigating.
-- Click the north button and confirm heading resets and POI tracking exits.
-- Add/remove a test layer and confirm POI picking/tracking and cleanup behavior.
-- Watch the perf pill for stable frame timing and culling/tile counts during normal navigation.
+FOSS Earth is licensed under [AGPL-3.0-only](LICENSE). See [NOTICE](NOTICE) for third-party terms
+and [COMMERCIAL_LICENSE.md](COMMERCIAL_LICENSE.md) for commercial arrangements.
