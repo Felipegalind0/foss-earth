@@ -22,30 +22,28 @@ describe("flight terrain readiness", () => {
     expect(new Set(samples.map(sample => `${sample.latDeg.toFixed(8)},${sample.lonDeg.toFixed(8)}`)).size).toBe(25);
   });
 
-  it("does not release flight until every local raster sample has refined geometry", () => {
+  it("checks every local raster sample when the spawn is within 100 m of terrain", () => {
     const samples = Array.from({ length: 25 }, () => surface(300));
     samples[24] = surface(300, { quality: 9 });
-    const blocked = evaluateTerrainReadiness({ latDeg: 45, lonDeg: -93, radiusMeters: 1000 }, samples, false);
+    const blocked = evaluateTerrainReadiness({
+      latDeg: 45, lonDeg: -93, radiusMeters: 1000, altitudeMeters: 350, clearanceMeters: 0,
+    }, samples, false);
     expect(blocked.result).toBeNull();
     expect(blocked.progress).toMatchObject({ phase: "refining", readySamples: 24, totalSamples: 25 });
 
     const ready = evaluateTerrainReadiness({
-      latDeg: 45, lonDeg: -93, altitudeAboveGroundMeters: 1524, clearanceMeters: 1000,
+      latDeg: 45, lonDeg: -93, altitudeMeters: 350, clearanceMeters: 0,
     }, samples.map(() => surface(300)), false);
-    expect(ready.result).toEqual({ groundHeightMeters: 300, altitudeMeters: 1824 });
+    expect(ready.result).toEqual({ groundHeightMeters: 300, altitudeMeters: 350 });
   });
 
-  it("rejects Google mesh samples until their tile error is safe, then clears local relief", () => {
-    const coarse = Array.from({ length: 25 }, () => surface(300, { geometricErrorMeters: 26 }));
-    expect(evaluateTerrainReadiness({ latDeg: 45, lonDeg: -93 }, coarse, true).result).toBeNull();
-
-    const refined = coarse.map((_, index) => surface(index === 5 ? 850 : 300, { geometricErrorMeters: 25 }));
-    const result = evaluateTerrainReadiness({
+  it("starts at high altitude from the center terrain sample without waiting for the rings", () => {
+    const selected = Array.from({ length: 25 }, (_, index) => surface(index === 5 ? 850 : 300, { geometricErrorMeters: 500_000 }));
+    const readiness = evaluateTerrainReadiness({
       latDeg: 45, lonDeg: -93, altitudeMeters: 1000, clearanceMeters: 1000,
-    }, refined, true).result;
-    // Google error is included in the minimum clearance, so an incoming coarse
-    // triangle cannot still intersect the aircraft's 1 km protection zone.
-    expect(result).toEqual({ groundHeightMeters: 300, altitudeMeters: 1875 });
+    }, selected, true);
+    expect(readiness.progress).toMatchObject({ readySamples: 1, totalSamples: 1 });
+    expect(readiness.result).toEqual({ groundHeightMeters: 300, altitudeMeters: 1300 });
   });
 
   it("validates geographic and distance inputs before starting any tile work", () => {
