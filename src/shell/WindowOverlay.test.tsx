@@ -2,7 +2,7 @@
 import { act } from "react";
 import { createRoot } from "react-dom/client";
 import { afterEach, expect, it, vi } from "vitest";
-import { WindowOverlay } from "./WindowOverlay";
+import { WindowOverlay, type WindowOverlayHandle } from "./WindowOverlay";
 
 afterEach(() => { vi.restoreAllMocks(); vi.unstubAllGlobals(); document.body.replaceChildren(); });
 
@@ -74,4 +74,43 @@ it("owns responsive launchers, cross-side tab moves, minimize/restore, and Locat
     expect(host.querySelector('[aria-label="Open right panel"]')).not.toBeNull();
   } finally { await act(async () => root.unmount()); }
   expect(disconnect).toHaveBeenCalledOnce();
+});
+
+it("opens or selects a tab on the left when both slots fit, and on the right when they do not", async () => {
+  vi.stubGlobal("IS_REACT_ACT_ENVIRONMENT", true);
+  let width = 1200;
+  vi.spyOn(HTMLElement.prototype, "clientWidth", "get").mockImplementation(() => width);
+  vi.stubGlobal("ResizeObserver", class { observe() {} disconnect() {} });
+  const host = document.createElement("div");
+  document.body.append(host);
+  const root = createRoot(host);
+  const overlayApiRef: { current: WindowOverlayHandle<"debug"> | null } = { current: null };
+  await act(async () => root.render(<WindowOverlay
+    getViewState={() => ({ latDeg: 45, lonDeg: -93 })}
+    setViewState={() => {}}
+    additionalTabs={[{ id: "debug", label: "Debug" }]}
+    renderAdditionalTab={() => <p>Debug panel</p>}
+    overlayApiRef={overlayApiRef}
+  />));
+  try {
+    expect(overlayApiRef.current).not.toBeNull();
+    await act(async () => overlayApiRef.current!.openOrSelectTab("debug"));
+    const left = host.querySelector<HTMLElement>('[data-side="left"]')!;
+    expect(left.querySelector(".foss-earth-tab-button")?.textContent).toBe("Debug");
+    expect(left.dataset.collapsed).toBe("false");
+    await act(async () => left.querySelector<HTMLButtonElement>(".foss-earth-tab-button")!.click());
+    expect(left.dataset.collapsed).toBe("true");
+    await act(async () => overlayApiRef.current!.openOrSelectTab("debug"));
+    expect(left.dataset.collapsed).toBe("false");
+    expect(left.querySelector(".foss-earth-tab-shell-selected .foss-earth-tab-button")?.textContent).toBe("Debug");
+    width = 700;
+    await act(async () => window.dispatchEvent(new Event("resize")));
+    expect(host.querySelector('[data-side="left"]')).toBeNull();
+    const right = host.querySelector<HTMLElement>('[data-side="right"]')!;
+    expect(right.querySelector(".foss-earth-tab-button")?.textContent).toBe("Debug");
+    await act(async () => right.querySelector<HTMLButtonElement>('[aria-label="Close Debug tab"]')!.click());
+    await act(async () => overlayApiRef.current!.openOrSelectTab("debug"));
+    expect(host.querySelector('[data-side="left"]')).toBeNull();
+    expect(host.querySelector('[data-side="right"] .foss-earth-tab-button')?.textContent).toBe("Debug");
+  } finally { await act(async () => root.unmount()); }
 });

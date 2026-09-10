@@ -14,6 +14,7 @@ export {
   closeTabInWorkspace,
   createWindowSlotState,
   createWindowWorkspaceState,
+  openOrSelectTabInWorkspace,
   openTabAndExpandWorkspaceSlot,
   openTabInWorkspace,
   moveTabsBetweenWorkspaceSlots,
@@ -22,6 +23,7 @@ export {
   selectTabInWorkspace,
   setWorkspaceSlotCollapsed,
   setWorkspaceSlotSize,
+  slotIdForOpenTab,
 } from "./core/workspaceState";
 
 export {
